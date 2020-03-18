@@ -21,6 +21,8 @@ app = Flask(__name__)
 appVersion = os.environ.get("VERSION")
 author = "bianchi.nicola@gmail.com"
 
+
+
 # http://127.0.0.1:5000/
 @app.route('/')
 def hello_world():
@@ -34,11 +36,13 @@ def hello_world():
                     'author': author,
                     }), 200
 
+
 # http://127.0.0.1:5000/version
 @app.route('/version')
 def version():
     '''Return version from os environment variable "VERSION"'''
     return jsonify({'version': appVersion}), 200
+
 
 # http://127.0.0.1:5000/date
 @app.route('/date')
@@ -46,11 +50,13 @@ def return_date():
     '''Return current date'''
     return jsonify({'date': str(datetime.date.today())}), 200
 
+
 # http://127.0.0.1:5000/user/nbianchi1
 @app.route('/user/<username>')
 def get_user(username):
     '''Return username passed as url'''
     return jsonify({'username': str(username)}), 200
+
 
 
 # App parameters
