@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 
 #
-# flask basic example
+# Flask REST API for testing purpose
 #
-# export FLASK_APP=app.py
-# flask run
+#
+
+# RUN:
+#  export FLASK_APP=app.py
+#  flask run
 
 import datetime
 import json
