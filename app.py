@@ -12,7 +12,7 @@
 import datetime
 import json
 import os
-from flask import Flask,jsonify
+from flask import Flask,jsonify, request
 
 # Init app
 app = Flask(__name__)
@@ -42,6 +42,14 @@ def hello_world():
 def version():
     '''Return version from os environment variable "VERSION"'''
     return jsonify({'version': appVersion}), 200
+
+
+# http://127.0.0.1:5000/headers
+@app.route('/headers')
+def headers():
+    '''Return request HTTP headers'''
+    headersDict = dict(request.headers)
+    return jsonify(headersDict), 200
 
 
 # http://127.0.0.1:5000/date
