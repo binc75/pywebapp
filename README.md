@@ -7,6 +7,7 @@ Everytime I needed to test something on K8S I was looking for a simple applicati
  * kernel info
  * **version string coming from env variable**
  * date
+ * HTTP headers 
 
 In order to keep things simple I've used Flask and the integrated Webserver so that this is absolutely not intended to be use in any production environment. 
 
