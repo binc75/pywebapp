@@ -10,7 +10,6 @@
 #  flask run
 
 import datetime
-import json
 import os
 from flask import Flask,jsonify, request
 
@@ -32,7 +31,7 @@ def hello_world():
     return jsonify({'message': 'Hello World',
                     'sysinfo': myHostName,
                     'version': appVersion,
-                    'route': ['/version', '/date', '/user'],
+                    'routes': ['/version', 'headers', '/date', '/user/<string>'],
                     'author': author,
                     }), 200
 
@@ -56,7 +55,8 @@ def headers():
 @app.route('/date')
 def return_date():
     '''Return current date'''
-    return jsonify({'date': str(datetime.date.today())}), 200
+    return jsonify({'date': str(datetime.date.today()),
+                    'time': str(datetime.datetime.now()).split(' ')[1]}), 200
 
 
 # http://127.0.0.1:5000/user/nbianchi1
