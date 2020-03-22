@@ -1,4 +1,4 @@
 sut:
   build: .
   #command: /usr/bin/curl http://127.0.0.1:5000
-  command: echo "test"
+  command: container-test.sh
