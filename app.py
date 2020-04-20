@@ -67,7 +67,7 @@ def get_user(username):
 
 # http://127.0.0.1:5000/cookie
 # Give you back a cookie
-@app.route('/cookie/')
+@app.route('/cookie')
 def cookie():
     if not request.cookies.get('canary'):
         res = make_response("Setting a cookie")
