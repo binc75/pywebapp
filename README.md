@@ -8,12 +8,16 @@ Everytime I needed to test something on K8S I was looking for a simple applicati
  * **version string coming from env variable**
  * date
  * HTTP headers 
+ * cookie creation 
 
 In order to keep things simple I've used Flask and the integrated Webserver so that this is absolutely not intended to be use in any production environment. 
 
 ## How to use it
 ### Plain Python 
 ```bash
+python3 -m venv env
+source env/bin/activate
+pip3 install -r requirements.txt
 export FLASK_APP=app.py
 export FLASK_ENV=development
 flask run
