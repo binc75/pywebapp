@@ -11,7 +11,7 @@
 
 import datetime
 import os
-from flask import Flask,jsonify, request, make_response
+from flask import Flask, jsonify, request, make_response
 
 # Init app
 app = Flask(__name__)
@@ -21,12 +21,10 @@ appVersion = os.environ.get("VERSION")
 author = "bianchi.nicola@gmail.com"
 
 
-
 # http://127.0.0.1:5000/
 @app.route('/')
 def hello_world():
     '''Return basic informations'''
-    #myHostName = os.uname()[1]
     myHostName = os.uname()
     return jsonify({'message': 'Hello World',
                     'sysinfo': myHostName,
@@ -65,17 +63,19 @@ def get_user(username):
     '''Return username passed as url'''
     return jsonify({'username': str(username)}), 200
 
+
 # http://127.0.0.1:5000/cookie
 # Give you back a cookie
 @app.route('/cookie')
 def cookie():
     if not request.cookies.get('canary'):
         res = make_response("Setting a cookie")
-        res.set_cookie('canary', 'betatester', max_age=60*60*24*365*2)
+        res.set_cookie('canary', 'betatester', max_age=60 * 60 * 24 * 365 * 2)
     else:
         res = make_response("Value of cookie canary is: {}".format(request.cookies.get('canary')))
     return res
 
+
 # App parameters
 if __name__ == '__main__':
-    app.run(debug=True,host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0')
