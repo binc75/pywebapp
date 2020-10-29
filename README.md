@@ -46,6 +46,7 @@ curl http://localhost:5000/date
 ```
 
 #### Docker Repo push
+**GITHUB actions build and push automatically on master merge/push**
 ```bash
 docker build --tag=nbianchi/pywebapp:v0.1 .
 docker push nbianchi/pywebapp:v0.1
