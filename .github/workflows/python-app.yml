@@ -34,3 +34,10 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
+    - name: Docker Image Build
+      run: docker build --tag=nbianchi/pywebapp:latest .
+    - name: Login to DockerHub Registry
+      run: echo ${{ secrets.DH_PASS }} | docker login -u ${{ secrets.DH_USER }} --password-stdin
+    - name: Push the tagged Docker image
+      run: docker push nbianchi/pywebapp:latest
+
