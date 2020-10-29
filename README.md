@@ -1,3 +1,4 @@
+![example branch parameter](https://github.com/binc75/pywebapp/workflows/Python%20Web%20Application/badge.svg?branch=master)
 ## Python Webapp REST API
 Simple Python REST API for testing.
 
