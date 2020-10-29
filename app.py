@@ -26,7 +26,7 @@ author = "bianchi.nicola@gmail.com"
 def hello_world():
     '''Return basic informations'''
     myHostName = os.uname()
-    return jsonify({'message': 'Hello World',
+    return jsonify({'message': 'Hello World!',
                     'sysinfo': myHostName,
                     'version': appVersion,
                     'routes': ['/version', '/headers', '/date', '/user/<string>', '/cookie'],
