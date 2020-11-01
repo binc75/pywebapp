@@ -10,8 +10,10 @@ Everytime I needed to test something on K8S I was looking for a simple applicati
  * date
  * HTTP headers 
  * cookie creation 
+ * POST endpoint
+ * swagger UI
 
-In order to keep things simple I've used Flask and the integrated Webserver so that this is absolutely not intended to be use in any production environment. 
+In order to keep things simple I've used FastAPI and the setup it's production ready (https://hub.docker.com/r/tiangolo/uvicorn-gunicorn-fastapi)
 
 ## How to use it
 ### Plain Python 
@@ -19,9 +21,7 @@ In order to keep things simple I've used Flask and the integrated Webserver so t
 python3 -m venv env
 source env/bin/activate
 pip3 install -r requirements.txt
-export FLASK_APP=app.py
-export FLASK_ENV=development
-flask run
+uvicorn main:app --port 5000 --reload
 ```
 Query the API:
 ```bash

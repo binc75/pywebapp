@@ -1,2 +1,5 @@
-flask
+#flask
 flake8
+requests
+fastapi==0.61.1
+uvicorn==0.12.2
