@@ -11,9 +11,11 @@ Everytime I needed to test something on K8S I was looking for a simple applicati
  * HTTP headers 
  * cookie creation 
  * POST endpoint
- * swagger UI
+ * **swagger UI** (http://127.0.0.1/docs)
+ * **redoc UI** (http://127.0.0.1/redoc)
 
-In order to keep things simple I've used FastAPI and the setup it's production ready (https://hub.docker.com/r/tiangolo/uvicorn-gunicorn-fastapi)
+In order to keep things simple I've used **FastAPI**.   
+The image generated from this repo (https://hub.docker.com/repository/docker/nbianchi/pywebapp) it's based on the tiangolo/uvicorn-gunicorn-fastapi image, so it can be considered production ready (gunicorn + uvcorn).
 
 ## How to use it
 ### Plain Python 
@@ -29,7 +31,7 @@ curl http://localhost:5000/
 curl http://localhost:5000/date
 ```
 
-### Docker
+### Docker (local)
 First build the container image:
 ```bash
 docker build --tag=nbianchi/pywebapp:v0.1 .
@@ -46,8 +48,8 @@ curl http://localhost:5000/version
 curl http://localhost:5000/date
 ```
 
-#### Docker Repo push
-**GITHUB actions build and push automatically on master merge/push**
+#### Docker Repo Push
+> :information_source: **GITHUB actions build and push automatically on master merge/push** :information_source:
 ```bash
 docker build --tag=nbianchi/pywebapp:v0.1 .
 docker push nbianchi/pywebapp:v0.1
