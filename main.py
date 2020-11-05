@@ -12,6 +12,7 @@ from typing import Optional
 from fastapi import FastAPI, Request, Response, Cookie
 from pydantic import BaseModel
 
+
 # Initialize app
 app = FastAPI(title="Pywebapp", description="Utility RestAPI", version="0.9")
 
