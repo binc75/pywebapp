@@ -102,3 +102,10 @@ spec:
     app: backend
   type: ClusterIP
 ```
+
+## Development
+### Linter
+Use flake8 to validate you code before pushing
+```
+flake8 . --exclude env,__pycache__  --ignore E501
+```
