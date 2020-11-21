@@ -9,7 +9,7 @@
 import datetime
 import os
 from typing import Optional
-from fastapi import FastAPI, Request, Response, Cookie
+from fastapi import FastAPI, Request, Response, Cookie, HTTPException
 from pydantic import BaseModel
 
 
@@ -19,6 +19,7 @@ app = FastAPI(title="Pywebapp", description="Utility RestAPI", version="0.9")
 # Vars
 appVersion = os.environ.get("VERSION")
 author = "bianchi.nicola@gmail.com"
+app.flakycounter = 1
 
 
 # Datamodel
@@ -55,7 +56,7 @@ def get_version():
 
 @app.get("/headers")
 def get_headers(request: Request):
-    '''Return clinet request HTTP headers'''
+    '''Return client request HTTP headers'''
 
     output = request.headers
 
@@ -99,3 +100,26 @@ def read_payload(name: str,
     '''Return post payload & parameters'''
 
     return {"item_id": name, "q1": q1, "q2": q2, "payload": payload}
+
+
+@app.get("/flaky")
+def flaky_endpoint():
+    '''Flaky endpoint that return random HTTP errors'''
+
+    # Define rate for errors
+    # 1 = 100% success rate
+    # 2 = 50% success rate
+    # 3 = 33% success rate
+    # 4 = 25% success rate
+    divider = 3
+
+    # If counter is divisible by divider return HTTP 2000
+    if app.flakycounter % divider == 0:
+        app.flakycounter += 1
+        print(app.flakycounter)
+        return {"message": "flaky but working this time"}
+    else:
+        # If counter it's not divisible by divider return HTTP 500 (with rise)
+        app.flakycounter += 1
+        print(app.flakycounter)
+        raise HTTPException(status_code=500, detail="Flaky")
