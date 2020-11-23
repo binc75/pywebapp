@@ -122,4 +122,4 @@ def flaky_endpoint():
         # If counter it's not divisible by divider return HTTP 500 (with rise)
         app.flakycounter += 1
         print(app.flakycounter)
-        raise HTTPException(status_code=500, detail="Flaky")
+        raise HTTPException(status_code=503, detail="Flaky")
