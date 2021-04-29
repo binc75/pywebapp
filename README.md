@@ -8,17 +8,17 @@ Everytime I needed to test something on K8S I was looking for a simple applicati
  * kernel info
  * **version string coming from env variable**
  * date
- * HTTP headers 
- * cookie creation 
+ * HTTP headers
+ * cookie creation
  * POST endpoint
  * **swagger UI** (http://127.0.0.1/docs)
  * **redoc UI** (http://127.0.0.1/redoc)
 
-In order to keep things simple I've used **FastAPI**.   
+In order to keep things simple I've used **FastAPI**.
 The image generated from this repo (https://hub.docker.com/repository/docker/nbianchi/pywebapp) it's based on the tiangolo/uvicorn-gunicorn-fastapi image, so it can be considered production ready (gunicorn + uvcorn).
 
 ## How to use it
-### Plain Python 
+### Plain Python
 ```bash
 python3 -m venv env
 source env/bin/activate
@@ -55,7 +55,7 @@ docker build --tag=nbianchi/pywebapp:v0.1 .
 docker push nbianchi/pywebapp:v0.1
 ```
 
-### Kubernetes 
+### Kubernetes
 Simple deployment example to deploy on K8S.
 ```yaml
 apiVersion: apps/v1

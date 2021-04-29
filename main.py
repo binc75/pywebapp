@@ -32,14 +32,14 @@ class PayloadExample(BaseModel):
 # Routes
 @app.get("/")
 def hello_world():
-    '''Return basic informations'''
+    """Return basic informations"""
 
     myHostName = os.uname()
     output = {
-        'message': 'Hello World!',
-        'sysinfo': myHostName,
-        'version': appVersion,
-        'author': author,
+        "message": "Hello World!",
+        "sysinfo": myHostName,
+        "version": appVersion,
+        "author": author,
     }
 
     return output
@@ -47,7 +47,7 @@ def hello_world():
 
 @app.get("/version")
 def get_version():
-    '''Return app version from ENV variable named VERSION'''
+    """Return app version from ENV variable named VERSION"""
 
     output = {"version": appVersion}
 
@@ -56,7 +56,7 @@ def get_version():
 
 @app.get("/headers")
 def get_headers(request: Request):
-    '''Return client request HTTP headers'''
+    """Return client request HTTP headers"""
 
     output = request.headers
 
@@ -65,11 +65,11 @@ def get_headers(request: Request):
 
 @app.get("/date")
 def get_date():
-    '''Return current date'''
+    """Return current date"""
 
     output = {
-        'date': str(datetime.date.today()),
-        'time': str(datetime.datetime.now()).split(' ')[1]
+        "date": str(datetime.date.today()),
+        "time": str(datetime.datetime.now()).split(" ")[1],
     }
 
     return output
@@ -77,10 +77,10 @@ def get_date():
 
 @app.get("/cookie")
 def get_cookie(response: Response, canary: Optional[str] = Cookie(None)):
-    '''
+    """
     Return cookie from client request
     test: curl -v --cookie "canary=betatester" http://127.0.0.1:8000/cookie
-    '''
+    """
     # If not cookie "canary" is found, set it
     if not canary:
         response.set_cookie(key="canary", value="betatester", max_age=60 * 60)
@@ -93,18 +93,20 @@ def get_cookie(response: Response, canary: Optional[str] = Cookie(None)):
 
 
 @app.post("/payload/{name}")
-def read_payload(name: str,
-                 payload: PayloadExample,
-                 q1: Optional[str] = None,
-                 q2: Optional[bool] = False):
-    '''Return post payload & parameters'''
+def read_payload(
+    name: str,
+    payload: PayloadExample,
+    q1: Optional[str] = None,
+    q2: Optional[bool] = False,
+):
+    """Return post payload & parameters"""
 
     return {"item_id": name, "q1": q1, "q2": q2, "payload": payload}
 
 
 @app.get("/flaky")
 def flaky_endpoint():
-    '''Flaky endpoint that return random HTTP errors'''
+    """Flaky endpoint that return random HTTP errors"""
 
     # Define rate for errors
     # 1 = 100% success rate

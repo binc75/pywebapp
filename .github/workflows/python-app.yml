@@ -44,4 +44,3 @@ jobs:
       run: echo ${{ secrets.DH_PASS }} | docker login -u ${{ secrets.DH_USER }} --password-stdin
     - name: Push the tagged Docker image
       run: docker push nbianchi/pywebapp:latest
-
